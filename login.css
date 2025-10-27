@@ -1,0 +1,106 @@
+/* Estilos Gerais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2296a1, #f7ca16);
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 40px 30px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 2em;
+    color: #2296a1;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    margin-top: 20px;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-container label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-container input, .form-container select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #f9f9f9;
+}
+
+.form-container input:focus, .form-container select:focus {
+    border-color: #2296a1;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2296a1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1a7d87;
+}
+
+p {
+    margin-top: 15px;
+    color: #555;
+}
+
+a {
+    color: #2296a1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.access-message {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #d9534f;
+}
+
+/* Campos de cadastro ocultos por padrão */
+.register-only {
+    display: none;
+}

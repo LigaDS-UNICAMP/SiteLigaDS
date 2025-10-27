@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Liga de Data Science UNICAMP</title>
+    <!-- Link para o novo arquivo CSS -->
+    <link rel="stylesheet" href="profile.css">
+    <!-- Fonte Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Meu Perfil</h1>
+        <nav>
+            <a href="dashboard.html" class="button">Voltar ao Dashboard</a>
+            <a href="index.html" class="button" onclick="logout()">Sair</a>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="profile-container">
+        <section class="profile-info">
+            <h2>Informações Pessoais</h2>
+            <div class="info-group">
+                <p><strong>Usuário:</strong> <span id="username"></span></p>
+                <p><strong>Email:</strong> <span id="email">usuario@example.com</span></p>
+                <p><strong>Data de Nascimento:</strong> <span id="birthdate">01/01/1990</span></p>
+                <p><strong>Tipo de Usuário:</strong> <span id="userType"></span></p>
+            </div>
+        </section>
+
+        <section class="history-section">
+            <h2>Histórico de Capacitações</h2>
+            <ul id="historyList">
+                <!-- Histórico será inserido aqui -->
+            </ul>
+        </section>
+
+        <!-- Seção de Mensagens -->
+        <section class="messages-section">
+            <h2>Mensagens</h2>
+            <div id="messagesList">
+                <!-- Mensagens serão inseridas aqui -->
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        const userType = sessionStorage.getItem("userType") || "externo";
+        const username = sessionStorage.getItem("username") || "Usuário";
+        const email = sessionStorage.getItem("email") || "usuario@example.com";
+        const birthdate = sessionStorage.getItem("birthdate") || "01/01/1990";
+
+        document.getElementById("username").innerText = username;
+        document.getElementById("email").innerText = email;
+        document.getElementById("birthdate").innerText = birthdate;
+        document.getElementById("userType").innerText = userType.charAt(0).toUpperCase() + userType.slice(1);
+
+        const historyList = document.getElementById("historyList");
+
+        const history = [
+            { exerciseId: '1', title: "Introdução à Ciência de Dados", completed: true, membersOnly: false },
+            { exerciseId: '2', title: "Machine Learning Avançado", completed: false, membersOnly: true },
+            { exerciseId: '3', title: "Análise de Dados com Python", completed: true, membersOnly: false },
+            { exerciseId: '4', title: "Projetos Colaborativos", completed: false, membersOnly: true }
+        ];
+
+        history.forEach(item => {
+            if (userType === "membro" || (userType === "externo" && !item.membersOnly)) {
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `
+                    <div class="history-item">
+                        <span>${item.title}</span>
+                        <span class="status ${item.completed ? 'completed' : 'in-progress'}">
+                            ${item.completed ? "Concluído" : "Em andamento"}
+                        </span>
+                        ${checkForNewMessages(item.exerciseId)}
+                    </div>
+                `;
+                historyList.appendChild(listItem);
+            }
+        });
+
+        function checkForNewMessages(exerciseId) {
+            // Verifica se há mensagens não lidas para o exercício
+            const messages = JSON.parse(localStorage.getItem('messages')) || [];
+            const unreadMessages = messages.filter(msg => msg.exerciseId === exerciseId && !msg.read && msg.from === 'support');
+
+            if (unreadMessages.length > 0) {
+                return `<span class="notification-dot"></span>`;
+            } else {
+                return '';
+            }
+        }
+
+        // Exibe o histórico de mensagens
+        const messagesList = document.getElementById("messagesList");
+        const messages = JSON.parse(localStorage.getItem('messages')) || [];
+
+        if (messages.length === 0) {
+            messagesList.innerHTML = "<p>Você não possui mensagens.</p>";
+        } else {
+            messages.forEach(message => {
+                const messageItem = document.createElement("div");
+                messageItem.classList.add('message-item');
+                messageItem.innerHTML = `
+                    <h3>Exercício ${message.exerciseId} - ${message.exerciseTitle}</h3>
+                    <p><strong>De:</strong> ${message.from === 'user' ? 'Você' : 'Suporte'}</p>
+                    <p>${message.content}</p>
+                    <p><small>${message.date}</small></p>
+                `;
+                messagesList.appendChild(messageItem);
+
+                // Marca a mensagem como lida
+                if (message.from === 'support') {
+                    message.read = true;
+                }
+            });
+
+            // Atualiza as mensagens no localStorage
+            localStorage.setItem('messages', JSON.stringify(messages));
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

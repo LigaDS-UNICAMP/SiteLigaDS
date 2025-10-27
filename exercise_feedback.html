@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício - 1+1=?</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1 id="exerciseTitle">Exercício - 1+1=?</h1>
+        <a href="capacitations.html" id="backLink" class="button">Voltar à Capacitação</a>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="exercise-container">
+        <section class="exercise-section">
+            <h2 id="exerciseName">1+1 = ?</h2>
+            <div id="exerciseContent">
+                <!-- Conteúdo do exercício -->
+                <p>Responda ao exercício abaixo:</p>
+                <form id="exerciseForm">
+                    <label for="userAnswer">Sua Resposta:</label>
+                    <input type="number" id="userAnswer" name="userAnswer" required>
+                    <button type="submit" class="button">Enviar Resposta</button>
+                </form>
+            </div>
+            <div id="feedbackContent" class="feedback-message">
+                <!-- O feedback será inserido aqui -->
+            </div>
+            <!-- Botão para abrir a seção de chat -->
+            <button id="openChatButton" class="button">Tirar Dúvidas</button>
+        </section>
+
+        <!-- Seção de Mensagens (oculta inicialmente) -->
+        <section class="chat-section" id="chatSection" style="display: none;">
+            <h2>Envie uma Mensagem para Tirar Dúvidas</h2>
+            <div id="chatContainer">
+                <!-- Mensagens serão exibidas aqui -->
+            </div>
+            <form id="chatForm">
+                <label for="userMessage">Sua Mensagem:</label>
+                <textarea id="userMessage" name="userMessage" rows="4" required></textarea>
+                <button type="submit" class="button">Enviar Mensagem</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        // Simula o tipo de usuário
+        const userType = sessionStorage.getItem("userType") || "externo";
+        const username = sessionStorage.getItem("username") || "Usuário";
+
+        // Obtém os parâmetros da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const capacitationName = urlParams.get('capacitation') || 'Introdução à Ciência de Dados';
+        const exerciseId = urlParams.get('exerciseId') || '1';
+
+        // Atualiza o título e link de volta
+        document.getElementById('exerciseTitle').innerText = `Exercício - 1+1=?`;
+        document.getElementById('exerciseName').innerText = `1+1 = ?`;
+        document.getElementById('backLink').href = `capacitations.html`;
+
+        // Manipula o envio do formulário do exercício
+        document.getElementById('exerciseForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o recarregamento da página
+
+            const userAnswer = Number(document.getElementById('userAnswer').value);
+            const feedbackContent = document.getElementById('feedbackContent');
+
+            if (userAnswer === 2) {
+                // Resposta correta
+                feedbackContent.innerText = "Parabéns! Você acertou a resposta.";
+                feedbackContent.style.color = "green";
+
+                // Marca o exercício como concluído no localStorage
+                const key = capacitationName + '_exercise_' + exerciseId;
+                localStorage.setItem(key, 'completed');
+            } else {
+                // Resposta incorreta
+                feedbackContent.innerText = "Resposta incorreta. Tente novamente.";
+                feedbackContent.style.color = "red";
+
+                // Remove a marcação de concluído caso exista
+                const key = capacitationName + '_exercise_' + exerciseId;
+                localStorage.removeItem(key);
+            }
+        });
+
+        // Exibe a seção de chat ao clicar no botão
+        document.getElementById('openChatButton').addEventListener('click', function() {
+            const chatSection = document.getElementById('chatSection');
+            if (chatSection.style.display === 'none') {
+                chatSection.style.display = 'block';
+                // Rola até a seção de chat
+                chatSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                chatSection.style.display = 'none';
+            }
+        });
+
+        // Manipula o envio do formulário de chat
+        document.getElementById('chatForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o recarregamento da página
+
+            const userMessage = document.getElementById('userMessage').value;
+            const chatContainer = document.getElementById('chatContainer');
+
+            // Cria um elemento de mensagem do usuário
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'user-message');
+            messageElement.innerText = userMessage;
+            chatContainer.appendChild(messageElement);
+
+            // Limpa o campo de texto
+            document.getElementById('userMessage').value = '';
+
+            // Armazena a mensagem do usuário no localStorage
+            const messageObj = {
+                exerciseId: exerciseId,
+                exerciseTitle: '1+1=?',
+                from: 'user',
+                content: userMessage,
+                date: new Date().toLocaleString(),
+                read: true
+            };
+            storeMessage(messageObj);
+
+            // Simula a resposta do suporte (a ser substituída pela lógica do back-end)
+            simulateSupportResponse();
+
+            // Rola o chat para a última mensagem
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        });
+
+        // Função para armazenar mensagens no localStorage
+        function storeMessage(messageObj) {
+            const messages = JSON.parse(localStorage.getItem('messages')) || [];
+            messages.push(messageObj);
+            localStorage.setItem('messages', JSON.stringify(messages));
+        }
+
+        // Simula a resposta do suporte e armazena no localStorage
+        function simulateSupportResponse() {
+            // Simula um atraso na resposta
+            setTimeout(function() {
+                const chatContainer = document.getElementById('chatContainer');
+
+                // Mensagem de resposta do suporte
+                const supportMessage = "Obrigado pela sua mensagem! Nossa equipe entrará em contato em breve.";
+                const responseElement = document.createElement('div');
+                responseElement.classList.add('message', 'support-message');
+                responseElement.innerText = supportMessage;
+                chatContainer.appendChild(responseElement);
+
+                // Armazena a mensagem de suporte no localStorage
+                const supportMessageObj = {
+                    exerciseId: exerciseId,
+                    exerciseTitle: '1+1=?',
+                    from: 'support',
+                    content: supportMessage,
+                    date: new Date().toLocaleString(),
+                    read: false // Marca como não lida para gerar a notificação
+                };
+                storeMessage(supportMessageObj);
+
+                // Rola o chat para a última mensagem
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

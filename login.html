@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Liga de Data Science UNICAMP</title>
+    <!-- Meta Tag para Responsividade -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link para o CSS -->
+    <link rel="stylesheet" href="login.css">
+    <!-- Fonte Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Liga de Data Science UNICAMP</h1>
+        
+        <!-- Login/Cadastro Form -->
+        <div class="form-container">
+            <form id="authForm">
+                <h2 id="formTitle">Login</h2>
+
+                <!-- Tipo de Usuário -->
+                <label for="userType">Tipo de Usuário:</label>
+                <select id="userType">
+                    <option value="membro">Membro</option>
+                    <option value="externo">Externo</option>
+                </select>
+
+                <!-- Campos de Login/Cadastro -->
+                <label for="username">Usuário</label>
+                <input type="text" id="username" placeholder="Digite seu usuário" required>
+
+                <!-- Campo Email (apenas no cadastro) -->
+                <label for="email" class="register-only">Email</label>
+                <input type="email" id="email" class="register-only" placeholder="Digite seu email">
+
+                <!-- Campo Data de Nascimento (apenas no cadastro) -->
+                <label for="birthdate" class="register-only">Data de Nascimento</label>
+                <input type="date" id="birthdate" class="register-only">
+
+                <!-- Campo Senha -->
+                <label for="password">Senha</label>
+                <input type="password" id="password" placeholder="Digite sua senha" required>
+
+                <!-- Campo Confirmação de Senha (apenas no cadastro) -->
+                <label for="confirmPassword" class="register-only">Confirme a Senha</label>
+                <input type="password" id="confirmPassword" class="register-only" placeholder="Confirme sua senha">
+
+                <!-- Botão de Envio -->
+                <button type="button" id="authButton" onclick="handleAuth()">Entrar</button>
+
+                <!-- Link para alternar entre Login e Cadastro -->
+                <p id="toggleText">Não tem uma conta? <a href="#" onclick="toggleForm()">Cadastre-se aqui</a></p>
+            </form>
+        </div>
+
+        <!-- Mensagem de acesso -->
+        <div id="accessMessage" class="access-message"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        let isLogin = true;
+
+        // Alterna entre Login e Cadastro
+        function toggleForm() {
+            isLogin = !isLogin;
+            document.getElementById("formTitle").innerText = isLogin ? "Login" : "Cadastro";
+            document.getElementById("authButton").innerText = isLogin ? "Entrar" : "Cadastrar";
+            document.getElementById("toggleText").innerHTML = isLogin
+                ? 'Não tem uma conta? <a href="#" onclick="toggleForm()">Cadastre-se aqui</a>'
+                : 'Já tem uma conta? <a href="#" onclick="toggleForm()">Faça login</a>';
+
+            // Exibir ou ocultar campos extras de cadastro
+            const registerFields = document.querySelectorAll(".register-only");
+            registerFields.forEach(field => {
+                if (isLogin) {
+                    field.style.display = "none";
+                } else {
+                    if (field.tagName === "LABEL") {
+                        field.style.display = "block"; // Para labels
+                    } else {
+                        field.style.display = "flex"; // Para inputs
+                    }
+                }
+            });
+        }
+
+        // Chamar toggleForm() na inicialização
+        toggleForm();
+
+        // Função de Autenticação Simples
+        function handleAuth() {
+            const userType = document.getElementById("userType").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const email = document.getElementById("email").value;
+            const birthdate = document.getElementById("birthdate").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const accessMessage = document.getElementById("accessMessage");
+
+            // Verificação simples de preenchimento
+            if (username === "" || password === "" || (!isLogin && (email === "" || birthdate === "" || confirmPassword === ""))) {
+                accessMessage.innerText = "Por favor, preencha todos os campos.";
+                return;
+            }
+
+            // Verificação de senha no cadastro
+            if (!isLogin && password !== confirmPassword) {
+                accessMessage.innerText = "As senhas não coincidem. Por favor, verifique.";
+                return;
+            }
+
+            // Mensagem Simulada de Acesso
+            if (isLogin) {
+                if (userType === "membro") {
+                    // Simula o armazenamento do tipo de usuário
+                    sessionStorage.setItem("userType", "membro");
+                    sessionStorage.setItem("username", username);
+                    // Redireciona para o dashboard
+                    window.location.href = "dashboard.html";
+                } else {
+                    sessionStorage.setItem("userType", "externo");
+                    sessionStorage.setItem("username", username);
+                    window.location.href = "dashboard.html";
+                }
+            } else {
+                accessMessage.innerText = `Cadastro realizado com sucesso como ${userType}! Faça login para continuar.`;
+                toggleForm();
+            }
+        }
+    </script>
+</body>
+</html>

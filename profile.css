@@ -1,0 +1,232 @@
+/* Estilos Gerais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #2296a1, #f7ca16);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #333;
+}
+
+/* Cabeçalho */
+header {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #2296a1;
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+header .button {
+    background-color: #2296a1;
+    color: #ffffff;
+    padding: 10px 25px;
+    margin: 0 10px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+header .button:hover {
+    background-color: #1a7d87;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Container do Perfil */
+.profile-container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Informações do Perfil */
+.profile-info {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.profile-info h2 {
+    font-size: 2em;
+    color: #2296a1;
+    margin-bottom: 20px;
+}
+
+.profile-info .info-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.profile-info .info-group p {
+    margin: 10px 20px;
+    font-size: 1.1em;
+}
+
+.profile-info .info-group p strong {
+    color: #2296a1;
+}
+
+.profile-info .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    margin: 0 auto 20px;
+    background-image: url('path_to_avatar_image'); /* Opcional */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Histórico de Capacitações */
+.history-section {
+    margin-bottom: 40px;
+}
+
+.history-section h2 {
+    font-size: 2em;
+    color: #2296a1;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#historyList {
+    list-style: none;
+    padding: 0;
+}
+
+.history-item {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.history-item:hover {
+    background-color: rgba(245, 245, 245, 0.95);
+}
+
+.history-item span {
+    font-size: 1.2em;
+}
+
+.history-item .status {
+    font-size: 1em;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.status.completed {
+    background-color: #5cb85c;
+    color: #fff;
+}
+
+.status.in-progress {
+    background-color: #f0ad4e;
+    color: #fff;
+}
+
+.notification-dot {
+    width: 12px;
+    height: 12px;
+    background-color: red;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 10px;
+    position: relative;
+    top: -10px;
+}
+
+/* Seção de Mensagens */
+.messages-section {
+    margin-bottom: 40px;
+}
+
+.messages-section h2 {
+    font-size: 2em;
+    color: #2296a1;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.message-item {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.message-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #2296a1;
+}
+
+.message-item p {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.message-item p strong {
+    color: #2296a1;
+}
+
+.message-item p small {
+    font-size: 0.9em;
+    color: #999;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    .profile-container {
+        margin: 30px 10px;
+        padding: 15px;
+    }
+
+    .profile-info .info-group p {
+        margin: 10px 0;
+        font-size: 1em;
+    }
+
+    .history-item, .message-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .history-item span, .history-item .status {
+        margin-bottom: 10px;
+    }
+}

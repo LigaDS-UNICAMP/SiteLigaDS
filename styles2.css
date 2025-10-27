@@ -1,0 +1,803 @@
+/* Estilos Gerais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #333;
+}
+
+/* Fundo Gradiente aplicado ao html */
+html {
+    background: linear-gradient(135deg, #2296a1, #f7ca16);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* Restante do CSS */
+h1, h2, h3 {
+    color: #2296a1; /* Títulos com cor principal */
+    font-weight: 500;
+}
+
+a {
+    color: #2296a1;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* ... restante do seu CSS ... */
+
+
+/* Cabeçalho */
+header {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #2296a1;
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+header .button {
+    background-color: #2296a1;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+header .button:hover {
+    background-color: #1a7d87;
+}
+
+/* Botões Gerais */
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #2296a1;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    margin: 10px 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #1a7d87;
+}
+
+/* Dashboard Styles */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.capacitations-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.cap-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 30px 20px;
+    margin: 15px;
+    width: 280px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cap-item h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #2296a1;
+    margin-bottom: 15px;
+}
+
+.cap-item p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.cap-item .button {
+    width: 100%;
+    margin-top: auto;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.cap-item .button:hover {
+    background-color: #1a7d87;
+}
+
+/* Container da Capacitação */
+.capacitation-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.capacitation-container h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #2296a1;
+}
+
+/* Seções */
+.pdf-section, .exercises-section, .progress-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Lista de Exercícios */
+.exercises-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.exercises-section li {
+    margin-bottom: 15px;
+}
+
+.exercises-section a {
+    font-size: 1.1em;
+    color: #2296a1;
+}
+
+.exercises-section a:hover {
+    text-decoration: underline;
+}
+
+/* Caixa de Seleção Personalizada */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.checkbox-label input {
+    display: none;
+}
+
+.checkbox-label .checkmark {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-right: 15px;
+    position: relative;
+}
+
+.checkbox-label input:checked + .checkmark {
+    background-color: #2296a1;
+}
+
+.checkbox-label .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-label input:checked + .checkmark:after {
+    display: block;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Barra de Progresso */
+.progress-bar {
+    width: 100%;
+    height: 15px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #2296a1;
+    transition: width 0.3s ease-in-out;
+}
+
+.progress-section p {
+    font-size: 1em;
+    color: #333;
+}
+
+/* Ícone de Checkmark */
+.checkmark-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #2296a1;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" viewBox="0 0 24 24"><path d="M20.285 6.709l-11.996 11.996-5.994-5.994 1.414-1.414 4.58 4.58 10.582-10.582z"/></svg>') center / contain no-repeat;
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" viewBox="0 0 24 24"><path d="M20.285 6.709l-11.996 11.996-5.994-5.994 1.414-1.414 4.58 4.58 10.582-10.582z"/></svg>') center / contain no-repeat;
+    margin-right: 10px;
+}
+
+.empty-space {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* Label dos Exercícios */
+.checkbox-label {
+    font-size: 1em;
+    color: #333;
+}
+
+.checkbox-label a {
+    color: #2296a1;
+    text-decoration: none;
+}
+
+.checkbox-label a:hover {
+    text-decoration: underline;
+}
+
+/* Feedback Section */
+.feedback-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #2296a1;
+}
+
+#feedbackContent {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #616161;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-left: 5px solid #2296a1;
+    border-radius: 4px;
+}
+
+/* Formulário do Exercício */
+.exercise-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+.exercise-section input[type="number"],
+.exercise-section textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    background-color: #f9f9f9;
+}
+
+.exercise-section input:focus,
+.exercise-section textarea:focus {
+    border-color: #2296a1;
+    outline: none;
+}
+
+.exercise-section .button {
+    width: 100%;
+}
+
+.exercise-section .button:hover {
+    background-color: #1a7d87;
+}
+
+/* Mensagem de Feedback */
+.feedback-message {
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #d9534f;
+}
+
+.feedback-message.success {
+    color: #5cb85c;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .capacitations-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cap-item {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .checkbox-label {
+        font-size: 1em;
+    }
+
+    .progress-section p {
+        font-size: 0.9em;
+    }
+
+    .exercise-section .button {
+        font-size: 1em;
+    }
+}
+
+/* Estilos Gerais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #333;
+}
+
+/* Fundo Gradiente aplicado ao html */
+html {
+    background: linear-gradient(135deg, #2296a1, #f7ca16);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* Restante do CSS */
+h1, h2, h3 {
+    color: #2296a1; /* Títulos com cor principal */
+    font-weight: 500;
+}
+
+a {
+    color: #2296a1;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos Gerais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #333;
+}
+
+/* Fundo Gradiente aplicado ao html */
+html {
+    background: linear-gradient(135deg, #2296a1, #f7ca16);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1, h2, h3 {
+    color: #2296a1; /* Títulos com cor principal */
+    font-weight: 500;
+}
+
+a {
+    color: #2296a1;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalho */
+header {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #2296a1;
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+header .button {
+    background-color: #2296a1;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+header .button:hover {
+    background-color: #1a7d87;
+}
+
+/* Botões Gerais */
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #2296a1;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    margin: 10px 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #1a7d87;
+}
+
+/* Container do Exercício */
+.exercise-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.exercise-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+.exercise-section input[type="number"],
+.exercise-section textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    background-color: #f9f9f9;
+}
+
+.exercise-section input:focus,
+.exercise-section textarea:focus {
+    border-color: #2296a1;
+    outline: none;
+}
+
+.exercise-section .button {
+    width: 100%;
+}
+
+.exercise-section .button:hover {
+    background-color: #1a7d87;
+}
+
+/* Mensagem de Feedback */
+.feedback-message {
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.feedback-message.success {
+    color: #5cb85c;
+}
+
+.feedback-message.error {
+    color: #d9534f;
+}
+
+/* Seção de Chat */
+.chat-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.chat-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #2296a1;
+}
+
+#chatContainer {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+.user-message {
+    background-color: #2296a1;
+    color: #fff;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.support-message {
+    background-color: #f1f1f1;
+    color: #333;
+    align-self: flex-start;
+    margin-right: auto;
+}
+
+.chat-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+.chat-section textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    background-color: #f9f9f9;
+}
+
+.chat-section textarea:focus {
+    border-color: #2296a1;
+    outline: none;
+}
+
+.chat-section .button {
+    width: 100%;
+}
+
+.chat-section .button:hover {
+    background-color: #1a7d87;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .exercise-container {
+        padding: 10px;
+    }
+
+    .exercise-section, .chat-section {
+        padding: 20px;
+    }
+
+    .button {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.profile-info, .history-section, .messages-section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.profile-info h2, .history-section h2, .messages-section h2 {
+    margin-bottom: 15px;
+    color: #2296a1;
+}
+
+.info-group p {
+    margin-bottom: 10px;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.status.completed {
+    color: green;
+}
+
+.status.in-progress {
+    color: orange;
+}
+
+.notification-dot {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.message-item {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.message-item:last-child {
+    border-bottom: none;
+}
+
+.message-item h3 {
+    margin-bottom: 5px;
+}
+
+.message-item p {
+    margin-bottom: 5px;
+}

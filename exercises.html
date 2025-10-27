@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Liga de Data Science UNICAMP</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <div class="exercises-container">
+        <h1>Exercícios</h1>
+        <div id="exercisesList" class="exercises-list">
+            <!-- Lista de exercícios -->
+        </div>
+        <a href="capacitations.html" class="button">Voltar às Capacitações</a>
+    </div>
+
+    <script>
+        const userType = sessionStorage.getItem("userType") || "externo";
+
+        const exercises = [
+            { title: "Exercício 1", description: "Faça uma análise de dados simples.", membersOnly: false },
+            { title: "Exercício 2", description: "Implemente um modelo de regressão.", membersOnly: true },
+            { title: "Exercício 3", description: "Visualize dados com matplotlib.", membersOnly: false },
+            { title: "Exercício 4", description: "Projete um algoritmo de clustering.", membersOnly: true }
+        ];
+
+        const exercisesList = document.getElementById("exercisesList");
+
+        exercises.forEach(ex => {
+            if (userType === "membro" || (userType === "externo" && !ex.membersOnly)) {
+                const exItem = document.createElement("div");
+                exItem.className = "ex-item";
+                exItem.innerHTML = `<h3>${ex.title}</h3>
+                                    <p>${ex.description}</p>
+                                    <a href="submit_exercise.html" class="button">Enviar Exercício</a>`;
+                exercisesList.appendChild(exItem);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Capacitação - Machine Learning Avançado</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1 id="capacitationTitle">Machine Learning Avançado</h1>
+        <a href="dashboard.html" class="button">Voltar ao Dashboard</a>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="capacitation-container">
+        <!-- Seção do PDF -->
+        <section class="pdf-section">
+            <h2>Material da Capacitação</h2>
+            <label class="checkbox-label">
+                <input type="checkbox" id="pdfCheckbox">
+                <span class="checkmark"></span>
+                <a href="pdfs/machine_learning_avancado.pdf" id="pdfLink" target="_blank">Download do PDF</a>
+            </label>
+        </section>
+
+        <!-- Seção de Exercícios -->
+        <section class="exercises-section">
+            <h2>Exercícios</h2>
+            <ul id="exercisesList">
+                <!-- Os exercícios serão inseridos aqui via JavaScript -->
+            </ul>
+        </section>
+
+        <!-- Barra de Progresso -->
+        <section class="progress-section">
+            <h2>Progresso</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p id="progressText">0% concluído</p>
+        </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        // Dados da capacitação
+        const capacitation = {
+            name: "Machine Learning Avançado",
+            pdfLink: "pdfs/machine_learning_avancado.pdf",
+            exercises: [
+                { id: 1, title: "Exercício 1: Regressão Linear" },
+                { id: 2, title: "Exercício 2: Árvores de Decisão" },
+                { id: 3, title: "Exercício 3: Redes Neurais" }
+            ]
+        };
+
+        // Inicializa a página com os dados da capacitação
+        document.getElementById('capacitationTitle').innerText = capacitation.name;
+        document.getElementById('pdfLink').href = capacitation.pdfLink;
+
+        // Funções para gerenciar o progresso
+        const totalItems = capacitation.exercises.length + 1; // Exercícios + PDF
+        let completedItems = 0;
+
+        // Inicializa as caixas de seleção e o progresso
+        window.onload = function() {
+            // Carrega o progresso do localStorage
+            const pdfCompleted = localStorage.getItem(capacitation.name + '_pdf') === 'true';
+            document.getElementById('pdfCheckbox').checked = pdfCompleted;
+            if (pdfCompleted) completedItems++;
+
+            // Carrega os exercícios
+            const exercisesList = document.getElementById('exercisesList');
+            capacitation.exercises.forEach(exercise => {
+                const li = document.createElement('li');
+
+                const label = document.createElement('label');
+                label.className = 'checkbox-label';
+
+                // Cria o link para o exercício
+                const exerciseLink = document.createElement('a');
+                exerciseLink.href = `exercise_feedback_machine.html?capacitation=${encodeURIComponent(capacitation.name)}&exerciseId=${exercise.id}`;
+                exerciseLink.innerText = exercise.title;
+
+                // Verifica se o exercício foi concluído com sucesso
+                const key = capacitation.name + '_exercise_' + exercise.id;
+                const exerciseCompleted = localStorage.getItem(key) === 'completed';
+
+                // Cria um ícone de checkmark se o exercício foi concluído
+                if (exerciseCompleted) {
+                    const checkmarkIcon = document.createElement('span');
+                    checkmarkIcon.className = 'checkmark-icon';
+                    label.appendChild(checkmarkIcon);
+                    completedItems++;
+                } else {
+                    // Espaço reservado para alinhamento
+                    const emptySpace = document.createElement('span');
+                    emptySpace.className = 'empty-space';
+                    label.appendChild(emptySpace);
+                }
+
+                label.appendChild(exerciseLink);
+
+                li.appendChild(label);
+                exercisesList.appendChild(li);
+            });
+
+            updateProgressBar();
+
+            // Adiciona ouvinte para a caixa de seleção do PDF
+            document.getElementById('pdfCheckbox').addEventListener('change', updateProgress);
+        };
+
+        function updateProgress() {
+            completedItems = 0;
+
+            // Verifica a caixa de seleção do PDF
+            const pdfCheckbox = document.getElementById('pdfCheckbox');
+            if (pdfCheckbox.checked) {
+                completedItems++;
+                localStorage.setItem(capacitation.name + '_pdf', 'true');
+            } else {
+                localStorage.setItem(capacitation.name + '_pdf', 'false');
+            }
+
+            // Atualiza o progresso dos exercícios
+            capacitation.exercises.forEach(exercise => {
+                const key = capacitation.name + '_exercise_' + exercise.id;
+                const exerciseCompleted = localStorage.getItem(key) === 'completed';
+                if (exerciseCompleted) {
+                    completedItems++;
+                }
+            });
+
+            updateProgressBar();
+        }
+
+        function updateProgressBar() {
+            const percentage = Math.round((completedItems / totalItems) * 100);
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+
+            progressFill.style.width = percentage + '%';
+            progressText.innerText = percentage + '% concluído';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Liga de Data Science UNICAMP</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Bem-vindo, <span id="username"></span>!</h1>
+        <nav>
+            <a href="profile.html" class="button">Meu Perfil</a>
+            <a href="index.html" class="button" onclick="logout()">Sair</a>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="dashboard-container">
+        <h2>Capacitações Disponíveis</h2>
+        <div id="capacitations" class="capacitations-list">
+            <!-- Capacitações serão inseridas aqui via JavaScript -->
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        // Verifica o tipo de usuário
+        const userType = sessionStorage.getItem("userType");
+        const username = sessionStorage.getItem("username");
+        document.getElementById("username").innerText = username || "Usuário";
+
+        // Lista de capacitações disponíveis
+        const capacitations = [
+            {
+                title: "Introdução à Ciência de Dados",
+                description: "Aprenda os conceitos básicos de Ciência de Dados.",
+                link: "capacitations.html",
+                membersOnly: false
+            },
+            {
+                title: "Machine Learning Avançado",
+                description: "Aprofunde-se em técnicas avançadas de Machine Learning.",
+                link: "capacitations_machine.html",
+                membersOnly: true
+            },
+            {
+                title: "Análise de Dados com Python",
+                description: "Utilize Python para análise de dados eficiente.",
+                link: "capacitation_python.html",
+                membersOnly: false
+            },
+            // Adicione mais capacitações conforme necessário
+        ];
+
+        const capacitationsList = document.getElementById("capacitations");
+
+        // Exibe as capacitações disponíveis de acordo com o tipo de usuário
+        capacitations.forEach(cap => {
+            if (userType === "membro" || (userType === "externo" && !cap.membersOnly)) {
+                const capItem = document.createElement("div");
+                capItem.className = "cap-item";
+                capItem.innerHTML = `
+                    <h3>${cap.title}</h3>
+                    <p>${cap.description}</p>
+                    <a href="${cap.link}" class="button">Acessar</a>
+                `;
+                capacitationsList.appendChild(capItem);
+            }
+        });
+
+        function logout() {
+            sessionStorage.clear();
+        }
+    </script>
+</body>
+</html>

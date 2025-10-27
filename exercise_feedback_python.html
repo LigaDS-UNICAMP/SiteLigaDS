@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício - Análise de Dados com Python</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1 id="exerciseTitle">Exercício</h1>
+        <a href="capacitation_python.html" id="backLink" class="button">Voltar à Capacitação</a>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="exercise-container">
+        <section class="exercise-section">
+            <h2 id="exerciseName">Exercício</h2>
+            <div id="exerciseContent">
+                <!-- Conteúdo do exercício será inserido aqui -->
+            </div>
+            <div id="feedbackContent" class="feedback-message">
+                <!-- O feedback será inserido aqui -->
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        // Simula o tipo de usuário
+        const userType = sessionStorage.getItem("userType") || "externo";
+
+        // Obtém os parâmetros da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const capacitationName = urlParams.get('capacitation') || 'Análise de Dados com Python';
+        const exerciseId = urlParams.get('exerciseId');
+
+        // Dados dos exercícios
+        const exercisesData = {
+            1: {
+                title: "Exercício 1: Introdução ao Python",
+                question: "Escreva um programa em Python que imprima 'Hello, World!' na tela.",
+                correctAnswer: "print('Hello, World!')"
+            },
+            2: {
+                title: "Exercício 2: Manipulação de Dados com Pandas",
+                question: "Carregue um DataFrame a partir de um arquivo CSV e exiba as primeiras 5 linhas.",
+                correctAnswer: "df = pd.read_csv('arquivo.csv')\nprint(df.head())"
+            },
+            3: {
+                title: "Exercício 3: Visualização de Dados com Matplotlib",
+                question: "Crie um gráfico de linha simples utilizando dados de exemplo.",
+                correctAnswer: "plt.plot([1,2,3],[4,5,6])\nplt.show()"
+            }
+        };
+
+        // Atualiza o título e link de volta
+        const exerciseData = exercisesData[exerciseId];
+        if (exerciseData) {
+            document.getElementById('exerciseTitle').innerText = exerciseData.title;
+            document.getElementById('exerciseName').innerText = exerciseData.title;
+            document.getElementById('backLink').href = `capacitation_python.html`;
+
+            // Exibe a pergunta do exercício
+            const exerciseContent = document.getElementById('exerciseContent');
+            exerciseContent.innerHTML = `
+                <p>${exerciseData.question}</p>
+                <form id="exerciseForm">
+                    <label for="userAnswer">Seu Código:</label><br>
+                    <textarea id="userAnswer" name="userAnswer" rows="10" cols="50" required></textarea><br>
+                    <button type="submit" class="button">Enviar Resposta</button>
+                </form>
+            `;
+        } else {
+            document.getElementById('exerciseContent').innerText = "Exercício não encontrado.";
+        }
+
+        // Manipula o envio do formulário
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('exerciseForm');
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Evita o recarregamento da página
+
+                    const userAnswer = document.getElementById('userAnswer').value.trim();
+                    const feedbackContent = document.getElementById('feedbackContent');
+
+                    // Simulação de verificação da resposta
+                    if (userAnswer !== "") {
+                        // Aqui você pode adicionar lógica para verificar a resposta do usuário
+
+                        // Marca o exercício como concluído no localStorage
+                        const key = capacitationName + '_exercise_' + exerciseId;
+                        localStorage.setItem(key, 'completed');
+
+                        feedbackContent.innerText = "Resposta enviada com sucesso! Aguarde o feedback.";
+                        feedbackContent.style.color = "green";
+                    } else {
+                        feedbackContent.innerText = "Por favor, insira seu código.";
+                        feedbackContent.style.color = "red";
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

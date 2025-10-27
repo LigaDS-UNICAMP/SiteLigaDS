@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Liga de Data Science UNICAMP</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <div class="feedback-container">
+        <h1>Feedback dos Exercícios</h1>
+        <div id="feedbackList" class="feedback-list">
+            <!-- Feedbacks serão inseridos aqui -->
+        </div>
+        <a href="dashboard.html" class="button">Voltar ao Dashboard</a>
+    </div>
+
+    <script>
+        const userType = sessionStorage.getItem("userType") || "externo";
+        const feedbackList = document.getElementById("feedbackList");
+
+        const feedbacks = [
+            { exercise: "Exercício 1", feedback: "Bom trabalho! Nota: 9/10", membersOnly: false },
+            { exercise: "Exercício 2", feedback: "Precisa melhorar a implementação.", membersOnly: true },
+            { exercise: "Exercício 3", feedback: "Excelente visualização.", membersOnly: false }
+        ];
+
+        feedbacks.forEach(fb => {
+            if (userType === "membro" || (userType === "externo" && !fb.membersOnly)) {
+                const fbItem = document.createElement("div");
+                fbItem.className = "fb-item";
+                fbItem.innerHTML = `<h3>${fb.exercise}</h3>
+                                    <p>${fb.feedback}</p>`;
+                feedbackList.appendChild(fbItem);
+            } else if (userType === "externo") {
+                const fbItem = document.createElement("div");
+                fbItem.className = "fb-item";
+                fbItem.innerHTML = `<h3>${fb.exercise}</h3>
+                                    <p>Complete o ciclo para receber feedback detalhado.</p>`;
+                feedbackList.appendChild(fbItem);
+            }
+        });
+    </script>
+</body>
+</html>

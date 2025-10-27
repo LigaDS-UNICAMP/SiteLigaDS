@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Exercício - Liga de Data Science UNICAMP</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <div class="submit-container">
+        <h1>Enviar Exercício</h1>
+        <form>
+            <label for="exercise">Exercício:</label>
+            <select id="exercise">
+                <option value="1">Exercício 1</option>
+                <option value="2">Exercício 2</option>
+                <option value="3">Exercício 3</option>
+                <option value="4">Exercício 4</option>
+            </select>
+
+            <label for="answer">Resposta:</label>
+            <textarea id="answer" rows="10" placeholder="Cole seu código ou resposta aqui"></textarea>
+
+            <button type="button" onclick="submitExercise()">Enviar</button>
+        </form>
+        <div id="submitMessage" class="access-message"></div>
+        <a href="exercises.html" class="button">Voltar aos Exercícios</a>
+    </div>
+
+    <script>
+        const userType = sessionStorage.getItem("userType") || "externo";
+        const submitMessage = document.getElementById("submitMessage");
+
+        function submitExercise() {
+            if (userType === "membro") {
+                submitMessage.innerText = "Exercício enviado com sucesso! Aguarde o feedback.";
+            } else {
+                submitMessage.innerText = "Envio restrito a membros. Considere se tornar um membro para acesso completo.";
+            }
+        }
+    </script>
+</body>
+</html>
