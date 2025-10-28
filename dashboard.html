@@ -11,7 +11,9 @@
         <h1>Bem-vindo, <span id="username"></span>!</h1>
         <nav>
             <a href="profile.html" class="button">Meu Perfil</a>
-            <a href="index.html" class="button" onclick="logout()">Sair</a>
+            <!-- Link para o dashboard do gerente (apenas para gerentes) -->
+            <a href="gerente-dashboard.html" id="gerenteLink" class="button" style="display: none;">Dashboard Gerente</a>
+            <a href="login.html" class="button" onclick="logout()">Sair</a>
         </nav>
     </header>
 
@@ -25,10 +27,36 @@
 
     <!-- JavaScript -->
     <script>
-        // Verifica o tipo de usuário
-        const userType = sessionStorage.getItem("userType");
-        const username = sessionStorage.getItem("username");
-        document.getElementById("username").innerText = username || "Usuário";
+        // Verificar se o usuário está logado
+        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+        if (!currentUser) {
+            // Redireciona para a página de login se não estiver logado
+            window.location.href = "login.html";
+        }
+
+        // Função para verificar permissões
+        function checkPermission(requiredRole) {
+            if (!currentUser) {
+                return false;
+            }
+            
+            // Hierarquia de permissões
+            const roleHierarchy = {
+                'externo': 0,
+                'membro': 1,
+                'gerente': 2
+            };
+            
+            return roleHierarchy[currentUser.role] >= roleHierarchy[requiredRole];
+        }
+
+        // Exibir nome do usuário
+        document.getElementById("username").innerText = currentUser.username || "Usuário";
+
+        // Mostrar link do dashboard do gerente apenas para gerentes
+        if (currentUser.role === 'gerente') {
+            document.getElementById("gerenteLink").style.display = 'inline-block';
+        }
 
         // Lista de capacitações disponíveis
         const capacitations = [
@@ -57,7 +85,10 @@
 
         // Exibe as capacitações disponíveis de acordo com o tipo de usuário
         capacitations.forEach(cap => {
-            if (userType === "membro" || (userType === "externo" && !cap.membersOnly)) {
+            // Usuários externos só veem capacitações não exclusivas para membros
+            // Membros e gerentes veem todas as capacitações
+            if (currentUser.role === 'membro' || currentUser.role === 'gerente' || 
+                (currentUser.role === 'externo' && !cap.membersOnly)) {
                 const capItem = document.createElement("div");
                 capItem.className = "cap-item";
                 capItem.innerHTML = `
@@ -70,7 +101,8 @@
         });
 
         function logout() {
-            sessionStorage.clear();
+            sessionStorage.removeItem('currentUser');
+            window.location.href = "login.html";
         }
     </script>
 </body>
