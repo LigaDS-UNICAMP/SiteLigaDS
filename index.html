@@ -1,306 +1,616 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
-    <title>Materiais - Liga de Data Science UNICAMP</title>
-     <!-- Existing head content -->
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Bootstrap Icons CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liga de Data Science UNICAMP - Conectando dados, inspirando o futuro</title>
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
+</head>
 <body>
-    <header>
-        <h1>Liga de Data Science UNICAMP</h1>
-        <nav>
-            <ul>
-                <li><a href="#historia">História</a></li>
-                <li><a href="#areas">Áreas</a></li>
-                <li><a href="#materiais">Materiais</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#eventos">Eventos</a></li><!--Necessario???-->
-                <li><a href="login.html">Cursos</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <!-- Intro Section -->
-        <section id="intro" class="intro-section">
-            <div class="intro-container">
-                <div class="intro-logo-container">
-                    <img src="https://ligads.github.io/assets/todos-bf19f39a.svg" alt="Liga de Data Science UNICAMP"
-                        class="intro-logo">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo-section">
+                    <div>
+                        <img class="logo-ds" src="image/logo.jpeg" alt="Liga de Data Science UNICAMP" >
+                    </div>
+                    <div class="logo-text">
+                        <h1>Liga de Data Science</h1>
+                        <span>UNICAMP</span>
+                    </div>
                 </div>
-                <div class="intro-text-container">
-                    <p class="intro-text">
-                        Somos a primeira Liga da UNICAMP Limeira totalmente voltada ao estudo da ciência de dados e
-                        programação.
+
+                <!-- Desktop Navigation -->
+                <nav class="nav-desktop">
+                    <a href="#historia" class="nav-link">Quem somos?</a>
+                    <a href="#areas" class="nav-link">Áreas</a>
+                    <a href="#projetos" class="nav-link">Projetos</a>
+                    <a href="#eventos" class="nav-link">Eventos</a>
+                    <a href="#contato" class="nav-link">Contato</a>
+                    <a href="login.html" class="btn-outline">Login</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg class="close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="nav-mobile hidden" id="mobileMenu">
+                <a href="#historia" class="nav-link-mobile" onclick="toggleMobileMenu()">Quem somos?</a>
+                <a href="#areas" class="nav-link-mobile" onclick="toggleMobileMenu()">Áreas</a>
+                <a href="#projetos" class="nav-link-mobile" onclick="toggleMobileMenu()">Projetos</a>
+                <a href="#eventos" class="nav-link-mobile" onclick="toggleMobileMenu()">Eventos</a>
+                <a href="#contato" class="nav-link-mobile" onclick="toggleMobileMenu()">Contato</a>
+                <a href="login.html" class="nav-link-mobile" onclick="toggleMobileMenu()">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!--Key-->
+        <section id="key" class="section-key">
+            <div class="container">
+                <h2 class="key-title">Conectando dados, inspirando o futuro</h2>
+                <p class="key-subtitle">Explorando o poder da ciência de dados para transformar ideias em realidade.</p>
+            </div>
+        </section>
+
+
+
+
+        <!-- História Section -->
+        <section id="historia" class="section bg-white">
+            <!-- Sobre a Plataforma -->
+                <div class="platform-info">
+                    <h3 class="platform-title">Sobre Esta Plataforma</h3>
+                    <div class="platform-grid">
+                        <div class="platform-item">
+                            <div class="platform-icon bg-primary">
+                                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M7 2v11h3v9l7-12h-4V2z"/>
+                                </svg>
+                            </div>
+                            <h4>Centralizar Materiais</h4>
+                            <p>Disponibilizamos apostilas, guias e recursos educacionais desenvolvidos pela Liga para facilitar o aprendizado.</p>
+                        </div>
+                        
+                        <div class="platform-item">
+                            <div class="platform-icon bg-secondary">
+                                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <h4>Divulgar Projetos</h4>
+                            <p>Apresentamos nossos projetos de ciência de dados aplicada, compartilhando conhecimento e resultados com a comunidade.</p>
+                        </div>
+                        
+                        <div class="platform-item">
+                            <div class="platform-icon bg-primary">
+                                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                </svg>
+                            </div>
+                            <h4>Conectar Comunidade</h4>
+                            <p>Oferecemos cursos e eventos para estudantes internos e externos, expandindo o conhecimento em data science.</p>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="container">
+    <div class="history-content">
+        <div class="history-image">
+            <img src="image/grupo.jpeg"
+                 alt="Grupo Liga de Data Science UNICAMP" 
+                 class="rounded-image">
+        </div>
+        <div class="history-text card">
+            <h2 class="section-title">Quem somos?</h2>
+            <p class="highlight-text">
+                Somos a primeira Liga da UNICAMP Limeira totalmente voltada ao estudo da ciência de dados e programação.
+            </p>
+            <p class="body-text">
+                Fundada em 2020, com sede em Limeira, a Liga tem o objetivo de promover e aplicar técnicas de ciência de dados entre os estudantes. Desde então, organizamos diversos eventos, workshops e projetos que contribuem para o desenvolvimento acadêmico e profissional de nossos membros.
+            </p>
+        </div>
+    </div>
+</div>
+
+        <!-- Missão, Visão e Valores Section -->
+            <div class="container">
+
+                <div class="mvv-grid">
+                    <!-- Missão -->
+                    <div class="mvv-card border-primary ">
+                        <div class="mvv-icon bg-light-primary">
+                            <svg class="icon text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="mvv-title text-primary">Missão</h3>
+                        <p class="mvv-text">
+                            Disseminar conhecimento sobre ciência de dados e programação.
+                        </p>
+                    </div>
+
+                    <!-- Visão -->
+                    <div class="mvv-card border-secondary">
+                        <div class="mvv-icon bg-light-secondary">
+                            <svg class="icon text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                            </svg>
+                        </div>
+                        <h3 class="mvv-title text-secondary">Visão</h3>
+                        <p class="mvv-text">
+                            Se tornar um ponto de encontro flexível para desenvolvimento de projetos e estudos relacionados à ciência de dados e programação.
+                        </p>
+                    </div>
+
+                    <!-- Valores -->
+                    <div class="mvv-card border-primary">
+                        <div class="mvv-icon bg-light-primary">
+                            <svg class="icon text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </div>
+                        <h3 class="mvv-title text-primary">Valores</h3>
+                        <div class="values-list">
+                            <div class="value-item">
+                                <span class="value-dot"></span>
+                                <span>Colaboração e trabalho em equipe</span>
+                            </div>
+                            <div class="value-item">
+                                <span class="value-dot"></span>
+                                <span>Inclusão e diversidade</span>
+                            </div>
+                            <div class="value-item">
+                                <span class="value-dot"></span>
+                                <span>Proatividade</span>
+                            </div>
+                            <div class="value-item">
+                                <span class="value-dot"></span>
+                                <span>Aprendizado contínuo</span>
+                            </div>
+                            <div class="value-item">
+                                <span class="value-dot"></span>
+                                <span>Ética e transparência</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Áreas Section -->
+        <section id="areas" class="section bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title bg-white">Áreas</h2>
+                </div>
+
+                <div class="areas-grid">
+                    <div class="area-card">
+                        <div class="area-content">
+                            <svg class="area-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                            <h3 class="area-title">Marketing</h3>
+                            <p class="area-text">
+                                Disseminar a Liga e o estudo de ciência de dados para o público externo, conectando nossa comunidade em Limeira.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="area-card">
+                        <div class="area-content">
+                            <svg class="area-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <h3 class="area-title">Projetos</h3>
+                            <p class="area-text">
+                                Aplicar os conhecimentos estudados na Liga em cenários próprios ou criados para outros membros.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="area-card">
+                        <div class="area-content">
+                            <svg class="area-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M7 2v11h3v9l7-12h-4V2z"/>
+                            </svg>
+                            <h3 class="area-title">Treinamento</h3>
+                            <p class="area-text">
+                                Auxiliar os membros da Liga no estudo das ferramentas de ciência de dados, com capacitações e apostilas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="area-card">
+                        <div class="area-content">
+                            <svg class="area-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                            <h3 class="area-title">Recursos Humanos</h3>
+                            <p class="area-text">
+                                Garantir o relacionamento harmônico das áreas e membros (além de organizar integrações e eventos em nossa unidade).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<section id="projetos" class="section bg-white">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title bg-white">Projetos em destaque</h2>
+    </div>
+
+    <!-- Carrossel Swiper -->
+    <div class="swiper projects-carousel">
+      <div class="swiper-wrapper">
+
+        <!-- Projeto 1 -->
+        <a href="https://drive.google.com/drive/folders/1AlTWkk9ndOh8plKd5AvzCTgG27oZcHPN?usp=drive_link" class="swiper-slide project-card">
+          <img src="https://plus.unsplash.com/premium_photo-1683740129124-0b4aac921cc1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170" 
+               alt="Recomendador de Filmes" class="project-image">
+          <div class="project-content">
+            <h3 class="project-title">Recomendador de Filmes</h3>
+            <p class="project-description">Uso de algoritmos para recomendar um filme de acordo com as suas preferências de gênero e a partir de palavras-chaves.</p>
+            <div class="project-tags">
+              <span class="tag">Filmes</span>
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Projeto 2 -->
+        <a href="https://drive.google.com/drive/folders/1zXzLNgTtTzHeNq7j0Pkg9vqIrYbCyF0V?usp=drive_link" class="swiper-slide project-card">
+          <img src="https://plus.unsplash.com/premium_photo-1661397087554-2774b7e7332f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170" 
+               alt="Planejamento e Controle de Produção" class="project-image">
+          <div class="project-content">
+            <h3 class="project-title">Qualidade do Sono</h3>
+            <p class="project-description">Comparação entre fatores que influenciam na qualidade do sono e previsão a partir dos mais relevantes, como nível de estresse.</p>
+            <div class="project-tags">
+              <span class="tag">Saúde</span>
+              <span class="tag">Python</span>
+              <span class="tag">Sono</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Projeto 3 -->
+        <a href="https://drive.google.com/drive/folders/1TB9Ft5rICGovyOrVuYNTRY3bo6-mDjWU?usp=drive_link" class="swiper-slide project-card">
+          <img src="https://images.unsplash.com/photo-1595315342809-fa10945ed07c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMGVkdWNhdGlvbiUyMGJvb2tzfGVufDF8fHx8MTc1NzYxNTExNHww&ixlib=rb-4.1.0&q=80&w=1080" 
+               alt="Performance dos Estudantes" class="project-image">
+          <div class="project-content">
+            <h3 class="project-title">Performance dos Estudantes</h3>
+            <p class="project-description">Análise de fatores tanto familiares, quanto individuais para a previsão do desempenho acadêmico de um estudante.</p>
+            <div class="project-tags">
+              <span class="tag">Educação</span>
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Projeto 4 -->
+        <a href="https://drive.google.com/drive/folders/16ljwvL-5C_i6uU18p-dNOGKhE_52KnDO?usp=drive_link" class="swiper-slide project-card">
+          <img src="https://images.unsplash.com/photo-1563986768711-b3bde3dc821e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1168" 
+               alt="Fraude de Cartão de Crédito" class="project-image">
+          <div class="project-content">
+            <h3 class="project-title">Fraude de Cartão de Crédito</h3>
+            <p class="project-description">Análise dos fatores que mais facilitam a identificação de fraudes em cartão de crédito e como evitar falsos-positivos.</p>
+            <div class="project-tags">
+              <span class="tag">Financeiro</span>
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Projeto 5 -->
+        <a href="https://drive.google.com/drive/folders/1mV97GdYzYw5vKj7wLS1Rk7OfLAwVPxwD?usp=drive_link" class="swiper-slide project-card">
+          <img src="https://plus.unsplash.com/premium_photo-1681996365271-f4f392125eee?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHVsbWFvfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=1000" 
+               alt="Câncer de Pulmão" class="project-image">
+          <div class="project-content">
+            <h3 class="project-title">Previsão de Câncer de Pulmão</h3>
+            <p class="project-description">Previsão se o paciênte possui ou não câncer de pulmão a partir do seu histórico médico e hábitos.</p>
+            <div class="project-tags">
+              <span class="tag">Saúde</span>
+              <span class="tag">Python</span>
+              <span class="tag">Machine Learning</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Botão "Ver Todos os Projetos" como slide -->
+        <a href="https://github.com/LigaDS" class="swiper-slide project-card cta-slide">
+            <div class="project-content" style="text-align:center; padding:3rem 1rem;">
+            <button class="btn-primary">
+                Ver Todos os Projetos
+                <svg class="btn-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+            </div>
+        </a>
+
+      </div>
+
+      <!-- Navegação -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+  </div>
+</section>
+
+ <section id="prop" class="section-prop bg-light-primary">
+    <div class="container text-center">
+        <h2 class="key-title">Quer aprender a desenvolver projetos como esses?</h2>
+        <p class="key-subtitle">Acesse nossos cursos e materiais exclusivos e comece a criar projetos incríveis hoje mesmo!</p>
+        <a href="login.html" class="btn-primary" style="margin-top: 1.5rem;">
+            Acessar Cursos & Materiais
+        </a>
+    </div>
+</section>
+
+
+<!-- 
+        Materiais Section
+        <section id="materiais" class="section bg-white">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Materiais de Estudo</h2>
+                </div>
+
+                <div class="materials-grid">
+                    <a href="https://drive.google.com/file/d/1xRq-ntyIJTsBby6YuqQgKBCnhCritejp/view?usp=drive_link"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="material-card">
+                        <div class="material-content">
+                            <div class="material-icon">
+                                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                                </svg>
+                            </div>
+                            <h3 class="material-title">Fundamentos de Data Science</h3>
+                        </div>
+                    </a>
+
+                    <a href="https://drive.google.com/file/d/1mRHPROPgbMYV0aULZoe103RCiixs98cd/view?usp=drive_link"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="material-card">
+                        <div class="material-content">
+                            <div class="material-icon">
+                                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                                </svg>
+                            </div>
+                            <h3 class="material-title">Data Science Intermediário</h3>
+                        </div>
+                    </a>
+
+                    <a href="https://drive.google.com/file/d/1uTbgbLr_trUPFNYW8DeYsIQ0rZQ4hUey/view?usp=drive_link"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="material-card">
+                        <div class="material-content">
+                            <div class="material-icon">
+                                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                                </svg>
+                            </div>
+                            <h3 class="material-title">Dominando Pandas</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+-->
+        
+
+        <!-- Eventos Section -->
+<section id="eventos" class="section bg-white">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title bg-white">Nossos Eventos e Participações</h2>
+      <a href="https://www.linkedin.com/company/liga-de-data-science" target="_blank" class="btn-outline">
+        Ver no LinkedIn
+      </a>
+    </div>
+
+    <div class="feed-grid">
+      <div class="feed-carousel swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="image/dj1.jpg" alt="Evento 1">
+          </div>
+          <div class="swiper-slide">
+            <img src="image/tf2.jpg" alt="Evento 2">
+          </div>
+          <div class="swiper-slide">
+            <img src="image/dj2.jpg" alt="Evento 3">
+          </div>
+          <div class="swiper-slide">
+            <img src="image/tf3.jpg" alt="Evento 3">
+          </div>
+          <div class="swiper-slide">
+            <img src="image/dj3.jpg" alt="Evento 3">
+          </div>
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <div class="feed-side">
+        <a href="https://www.linkedin.com/posts/liga-de-data-science_data-journey-desvendando-o-universo-dos-activity-7338882785610285056-qq9Y?utm_source=share&utm_medium=member_desktop&rcm=ACoAACvYVMQB6E6N22BG9ZJ8DMt8pyhmrJ3gwG0" target="_blank" class="feed-side-card">
+          <img src="image/dj.jpg" alt="Post 3" class="feed-side-image">
+          <div class="feed-side-content">
+            <h4 class="feed-side-title">Data Journey: Desvendando o universo dos dados.</h4>
+            <p class="feed-side-time">Mar/2025</p>
+          </div>
+        </a>
+        
+        <a href="https://www.linkedin.com/posts/liga-de-data-science_participa%C3%A7%C3%A3o-na-15%C2%AA-edi%C3%A7%C3%A3o-do-tecnologia-activity-7251668097680429057-gquQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAACvYVMQB6E6N22BG9ZJ8DMt8pyhmrJ3gwG0" target="_blank" class="feed-side-card">
+          <img src="image/tf.jpg" alt="Post 3" class="feed-side-image">
+          <div class="feed-side-content">
+            <h4 class="feed-side-title">Tecnologia em Foco: Workshop do zero à análise de dados.</h4>
+            <p class="feed-side-time">Out/2024</p>
+          </div>
+        </a>
+
+        <a href="https://www.linkedin.com/posts/liga-de-data-science_semana-de-estudos-liga-de-data-science-activity-7341419513688612886-PmxZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAACvYVMQB6E6N22BG9ZJ8DMt8pyhmrJ3gwG0" target="_blank" class="feed-side-card">
+          <img src="image/semana_de_estudos.jpg" alt="Post 3" class="feed-side-image">
+          <div class="feed-side-content">
+            <h4 class="feed-side-title">Semana de Estudos: Ingresso dos novos membros da Liga DS 2024</h4>
+            <p class="feed-side-time">Abr/2024</p>
+          </div>
+        </a>
+        
+        </div>
+    </div>
+  </div>
+</section>
+
+ <section id="contato" class="section bg-light">
+    <div class="container text-center">
+        <h2 class="y-title">Alguma dúvida?</h2>
+        <p class="y-subtitle">Envie pelo nosso e-mail que iremos te responder o mais rápido poosível!</p>
+        <a href="mailto:ligads@unicamp.br"  class="btn-primary" style="margin-top: 1.5rem;">
+            Envie uma mensagem
+        </a>
+    </div>
+</section>
+  
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Logo and Tagline -->
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <svg viewBox="0 0 48 48" class="footer-logo-svg" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Data visualization chart bars -->
+                                <rect x="8" y="28" width="4" height="12" fill="white"/>
+                                <rect x="14" y="22" width="4" height="18" fill="white"/>
+                                <rect x="20" y="16" width="4" height="24" fill="white"/>
+                                <rect x="26" y="20" width="4" height="20" fill="white"/>
+                                <rect x="32" y="12" width="4" height="28" fill="white"/>
+                                <rect x="38" y="18" width="4" height="22" fill="white"/>
+                                
+                                <!-- Circuit pattern overlay -->
+                                <path d="M6 8 L14 8 L14 10 L18 10 L18 8 L26 8 L26 10 L30 10 L30 8 L42 8" 
+                                      stroke="white" stroke-width="1" fill="none" opacity="0.8"/>
+                                <circle cx="10" cy="8" r="1" fill="white"/>
+                                <circle cx="22" cy="8" r="1" fill="white"/>
+                                <circle cx="34" cy="8" r="1" fill="white"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="footer-tagline">
+                        Conectando dados, inspirando o futuro.
+                    </p>
+                    <p class="footer-address">
+                        UNICAMP - Faculdade de Ciências Aplicadas<br>
+                        Limeira - SP
                     </p>
                 </div>
-            </div>
-        </section>
 
-        <section id="historia">
-            <h2>História</h2>
-            <div class="historia-content">
-                <img src="image/grupo.png" alt="Grupo Liga de Data Science UNICAMP" class="historia-image">
-                <p>
-                    <br>
-                    A Liga de Data Science da UNICAMP foi fundada em 2020 com o objetivo de promover o
-                    estudo e a aplicação de técnicas de ciência de dados entre os estudantes da universidade. Desde
-                    então, a liga tem organizado diversos eventos, workshops e projetos que contribuem para o
-                    desenvolvimento acadêmico e profissional de seus membros.
-                </p>
-            </div>
-        </section>
-        <section id="areas">
-            <h2>Áreas</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3>📢 Marketing</h3>
-                    <p>Disseminar a Liga e o estudo de ciência de dados para o público externo. 📣💬</p>
-                </div>
-                <div class="card">
-                    <h3>🛠️ Projetos</h3>
-                    <p>Aplicar os conhecimentos estudados na Liga em cenários próprios ou criados para outros membros.
-                        📊💻</p>
-                </div>
-                <div class="card">
-                    <h3>📚 Treinamento</h3>
-                    <p>Auxiliar os membros da Liga no estudo das ferramentas de ciência de dados, com capacitações e
-                        apostilas. 🍎✏️</p>
-                </div>
-                <div class="card">
-                    <h3>🤝 Recursos Humanos</h3>
-                    <p>Garantir o relacionamento harmônico das áreas e membros (além de organizar umas integrações às
-                        vezes 🎉).</p>
-                </div>
-            </div>
-        </section>
-        <section id="materiais" class="materials-section">
-            <h2 class="materials-title">Materiais</h2>
-            <div class="materials-container">
-                <a href="https://drive.google.com/file/d/1xRq-ntyIJTsBby6YuqQgKBCnhCritejp/view?usp=drive_link"
-                    target="_blank">
-                    <img class="material-image" src="https://ligads.github.io/assets/basico-151c382b.png"
-                        alt="Material Básico">
-                </a>
-                <a href="https://drive.google.com/file/d/1mRHPROPgbMYV0aULZoe103RCiixs98cd/view?usp=drive_link"
-                    target="_blank">
-                    <img class="material-image" src="https://ligads.github.io/assets/intermediario-cc5787f6.png"
-                        alt="Material Intermediário">
-                </a>
-                <a href="https://drive.google.com/file/d/1uTbgbLr_trUPFNYW8DeYsIQ0rZQ4hUey/view?usp=drive_link"
-                    target="_blank">
-                    <img class="material-image" src="https://ligads.github.io/assets/pandas-4c9aa155.png"
-                        alt="Material Pandas">
-                </a>
-            </div>
-        </section>
-        <section id="projetos" class="projects-section">
-            <h2 class="projects-title">Projetos em Andamento</h2>
-            <div class="projects-container">
-                <!-- Projeto 1 -->
-                <div class="project-card">
-                    <img src="https://ligads.github.io/assets/forest-c7d67a82.png" alt="Nottingham Forest"
-                        class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Nottingham Forest</h3>
-                        <div class="project-details">
-                            <h4>Contexto</h4>
-                            <p>O Nottingham Forest, um clube histórico do futebol inglês, busca consolidar-se na
-                                primeira divisão da Inglaterra após anos de dificuldade.</p>
-                            <h4>Objetivos</h4>
-                            <ul>
-                                <li>Formar um elenco com raízes fortes, garantindo que oito dos jogadores sejam das
-                                    ilhas britânicas, representando cada uma das nações: Inglaterra, Irlanda, Escócia,
-                                    Irlanda do Norte e País de Gales.</li>
-                                <li>A média de idade do elenco precisa ser superior a 28 anos, trazendo a experiência
-                                    necessária para evitar o rebaixamento.</li>
-                                <li>A diferença entre o jogador mais caro e o mais barato do time não deve ultrapassar
-                                    25 milhões, mantendo o equilíbrio financeiro.</li>
-                            </ul>
+                <!-- Navigation Links -->
+                <div class="footer-section">
+                    <h3 class="footer-title">Navegação</h3>
+                    <div class="footer-nav">
+                        <div class="footer-nav-col">
+                            <a href="#historia" class="footer-link">Quem somos?</a>
+                            <a href="#areas" class="footer-link">Áreas</a>
+                            <a href="#projetos" class="footer-link">Projetos</a>
                         </div>
-                        <div class="project-tags">
-                            <span class="tag">Futebol</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Pandas</span>
+                        <div class="footer-nav-col">
+                            <a href="#eventos" class="footer-link">Eventos</a>
+                            <a href="login.html" class="footer-link">Acesso aos cursos</a>
                         </div>
                     </div>
                 </div>
-                <!-- Projeto 2 -->
-                <div class="project-card">
-                    <img src="https://ligads.github.io/assets/juventus-42cefe0b.png" alt="Juventus"
-                        class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Juventus</h3>
-                        <div class="project-details">
-                            <h4>Contexto</h4>
-                            <p>A Juventus, a equipe mais vitoriosa da Itália, visa retornar ao topo do futebol europeu.
-                            </p>
-                            <h4>Objetivos</h4>
-                            <ul>
-                                <li>Contratar um jogador estrela e estrangeiro, cujo valor seja pelo menos 20% superior
-                                    ao segundo jogador mais caro do elenco.</li>
-                                <li>Manter a média de idade do time inferior a 26 anos, garantindo potencial de
-                                    evolução.</li>
-                                <li>Evitar a presença de jogadores de nacionalidades rivais, como Brasil e Argentina ou
-                                    Inglaterra e Alemanha, para assegurar harmonia no vestiário.</li>
-                            </ul>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tag">Futebol</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Pandas</span>
-                        </div>
+
+                <!-- Contact -->
+                <div class="footer-section">
+                    <h3 class="footer-title">Contato</h3>
+                    
+                    <div class="footer-email">
+                        <p>ligads@unicamp.br</p>
                     </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://ligads.github.io/assets/bilbao-d6c0990a.png" alt="Athletic Bilbao"
-                        class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Athletic Bilbao</h3>
-                        <div class="project-details">
-                            <h4>Contexto</h4>
-                            <p>O Athletic Bilbao, um clube com forte tradição basca no futebol espanhol, busca renovar
-                                seu elenco respeitando suas raízes culturais e objetivos competitivos.</p>
-                            <h4>Objetivos</h4>
-                            <ul>
-                                <li>Montar uma equipe com 15 jogadores (incluindo dois goleiros), sendo pelo menos
-                                    quatro atletas de origem espanhola para preservar a identidade do clube.</li>
-                                <li>Garantir competitividade para se qualificar para competições europeias, exigindo que
-                                    ao menos dois jogadores sejam ex-estrelas do futebol, trazendo experiência e impacto
-                                    imediato.</li>
-                                <li>Incluir uma jovem promessa (abaixo de 24 anos) entre os três jogadores de maior
-                                    valor, preparando o clube para o futuro.</li>
-                            </ul>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tag">Futebol</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Pandas</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Projeto 4 -->
-                <div class="project-card">
-                    <img src="https://ligads.github.io/assets/roupas-b917eb52.png"
-                        alt="Planejamento e Controle de Produção" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Planejamento e Controle de Produção</h3>
-                        <div class="project-details">
-                            <h4>Contexto</h4>
-                            <p>Uma indústria têxtil em Jacutinga, Minas Gerais, deseja otimizar o dimensionamento de
-                                seus lotes para reduzir custos.</p>
-                            <h4>Objetivos</h4>
-                            <ul>
-                                <li>Definir a quantidade ideal de cada peça de roupa a ser produzida mensalmente.</li>
-                                <li>Garantir que a demanda seja atendida sem exceder a capacidade produtiva.</li>
-                                <li>Minimizar os custos associados à produção têxtil da fábrica.</li>
-                            </ul>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tag">Indústria</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Pandas</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Projeto 5 -->
-                <div class="project-card">
-                    <img src="https://ligads.github.io/assets/books-66cf661f.png" alt="Performance dos Estudantes"
-                        class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Performance dos Estudantes</h3>
-                        <div class="project-details">
-                            <h4>Contexto</h4>
-                            <p>Este projeto foca na análise de dados relacionados ao desempenho acadêmico dos alunos,
-                                explorando variáveis que vão desde informações pessoais e familiares até o estilo de
-                                vida e o histórico escolar.</p>
-                            <h4>Objetivos</h4>
-                            <p>Utilizar a linguagem Python e suas bibliotecas de análise de dados para construir um
-                                modelo computacional que ajude a compreender como variáveis como a profissão dos pais,
-                                nível de instrução e ambiente familiar influenciam o desempenho acadêmico, visando gerar
-                                insights valiosos para políticas educacionais e intervenções personalizadas.</p>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tag">Educação</span>
-                            <span class="tag">Miniprojeto</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Pandas</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Projeto 6 -->
-                <div class="project-card">
-                    <img src="https://ligads.github.io/assets/sono-1c27d26f.png" alt="Qualidade do Sono"
-                        class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Qualidade do Sono</h3>
-                        <div class="project-details">
-                            <h4>Contexto</h4>
-                            <p>Análise de um banco de dados focado na saúde do sono, considerando fatores culturais,
-                                sociais, psicológicos, comportamentais, fisiopatológicos e ambientais que afetam o sono
-                                de uma pessoa.</p>
-                            <h4>Objetivos</h4>
-                            <p>Extrair insights a partir de variáveis subjetivas e relacionar fatores como "Qualidade do
-                                sono" e "Nível de estresse" com outros fatores através de correlações e gráficos,
-                                visando fornecer informações confiáveis e relacionamentos claros entre essas variáveis.
-                            </p>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tag">Saúde</span>
-                            <span class="tag">Miniprojeto</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Pandas</span>
-                        </div>
+
+                    <!-- Social Icons -->
+                    <div class="social-links">
+                        <a href="mailto:ligads@unicamp.br" class="social-link" aria-label="Email">
+                            <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/liga-de-data-science" target="_blank" class="social-link" aria-label="LinkedIn">
+                            <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/LigaDS" target="_blank" class="social-link" aria-label="GitHub">
+                            <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@ligadedatascienceunicamp2953" target="_blank" class="social-link" aria-label="YouTube">
+                            <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/ligadsunicamp/" target="_blank" class="social-link" aria-label="Instagram">
+                            <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
 
-        </section>
-    </main>
-    <footer>
-        <div class="footer-container d-md-flex justify-content-center align-items-center">
-            <div class="logo-container d-flex justify-content-center align-items-center">
-                <a href="#">
-                    <!-- Include your SVG logo here -->
-                    <svg class="icon footer-logo" viewBox="0 0 117.40716 117.40716" xmlns="http://www.w3.org/2000/svg" style="--icon-size: 5rem; --icon-color: #eeeeee; --icon-stroke-width: 4;">
-                        <!-- SVG content -->
-                    </svg>
-                </a>
-            </div>
-            <div class="contact-container d-flex flex-column">
-                <h1 id="Contato" class="fs-3">Contato</h1>
-                <div class="d-flex justify-content-center">
-                    <a href="mailto:ligadsunicamplimeira@gmail.com" class="contact-pressable">
-                        <i class="bi bi-envelope-at-fill"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/company/liga-de-data-science/about/" class="contact-pressable">
-                        <i class="bi bi-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/LigaDS" class="contact-pressable">
-                        <i class="bi bi-github"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@ligadedatascienceunicamp2953" class="contact-pressable">
-                        <i class="bi bi-youtube"></i>
-                    </a>
-                    <a href="https://www.instagram.com/ligadsunicamp/" class="contact-pressable">
-                        <i class="bi bi-instagram"></i>
-                    </a>
+            <!-- Bottom Section -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="footer-copyright">
+                        <p>© 2025 Liga de Data Science UNICAMP. Todos os direitos reservados.</p>
+                    </div>
+                    <div class="footer-credits">
+                        <p>Desenvolvido pela Liga de Data Science UNICAMP</p>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- Scripts -->
-    <!-- Bootstrap JS (Optional) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Your custom scripts -->
+
     <script src="script.js"></script>
 </body>
-
 </html>
+
