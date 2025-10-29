@@ -1,11 +1,16 @@
 let isLogin = true;
 
-// Alterna entre Login e Cadastro
+// Função para alternar entre login e cadastro
 function toggleForm() {
     isLogin = !isLogin;
+    
+    // Atualiza o formulário
     document.getElementById("formTitle").innerText = isLogin ? "Login" : "Cadastro";
+    document.getElementById("formSubtitle").innerText = isLogin ? "Use suas credenciais para acessar" : "Preencha seus dados para se cadastrar";
     document.getElementById("authButton").innerText = isLogin ? "Entrar" : "Cadastrar";
-    document.getElementById("toggleText").innerHTML = isLogin
+    
+    // Atualiza o texto de alternância
+    document.getElementById("toggleText").innerHTML = isLogin 
         ? 'Não tem uma conta? <a href="#" onclick="toggleForm()">Cadastre-se aqui</a>'
         : 'Já tem uma conta? <a href="#" onclick="toggleForm()">Faça login</a>';
 
@@ -14,9 +19,36 @@ function toggleForm() {
     registerFields.forEach(field => {
         field.style.display = isLogin ? "none" : "block";
     });
+
+    // Atualiza a seção de boas-vindas
+    updateWelcomeSection();
+    
+    // Limpa mensagens de erro
+    document.getElementById("accessMessage").innerText = "";
+    // Limpa os campos
+    document.getElementById("authForm").reset();
 }
 
-// Função de Autenticação
+// Atualiza a seção de boas-vindas
+function updateWelcomeSection() {
+    const welcomeContent = document.getElementById("welcomeContent");
+    
+    if (isLogin) {
+        welcomeContent.innerHTML = `
+            <h1>Ainda não tem conta?</h1>
+            <p>Para acessar os nossos cursos, faça o cadastro com suas informações pessoais</p>
+            <button class="toggle-btn" onclick="toggleForm()">Criar Conta</button>
+        `;
+    } else {
+        welcomeContent.innerHTML = `
+            <h1>Já é membro?</h1>
+            <p>Faça login para acessar todos os nossos cursos e recursos exclusivos</p>
+            <button class="toggle-btn" onclick="toggleForm()">Fazer Login</button>
+        `;
+    }
+}
+
+// Função de Autenticação (Login e Cadastro)
 function handleAuth() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -25,20 +57,13 @@ function handleAuth() {
     const confirmPassword = document.getElementById("confirmPassword").value;
     const accessMessage = document.getElementById("accessMessage");
 
-    // Verificação simples de preenchimento
-    if (username === "" || password === "" || (!isLogin && (email === "" || birthdate === "" || confirmPassword === ""))) {
-        accessMessage.innerText = "Por favor, preencha todos os campos.";
-        return;
-    }
-
-    // Verificação de senha no cadastro
-    if (!isLogin && password !== confirmPassword) {
-        accessMessage.innerText = "As senhas não coincidem. Por favor, verifique.";
-        return;
-    }
-
     if (isLogin) {
-        // Processo de login
+        // Processo de LOGIN
+        if (username === "" || password === "") {
+            accessMessage.innerText = "Por favor, preencha todos os campos.";
+            return;
+        }
+
         const users = JSON.parse(localStorage.getItem('users')) || [];
         const user = users.find(u => u.username === username && u.password === password && u.isActive);
         
@@ -50,12 +75,26 @@ function handleAuth() {
             }));
             
             // Redireciona para o dashboard
-            window.location.href = "dashboard.html";
+            accessMessage.innerText = "Login realizado com sucesso! Redirecionando...";
+            setTimeout(() => {
+                window.location.href = "dashboard.html";
+            }, 1500);
         } else {
             accessMessage.innerText = "Usuário ou senha incorretos.";
         }
     } else {
-        // Processo de cadastro
+        // Processo de CADASTRO
+        if (username === "" || password === "" || email === "" || birthdate === "" || confirmPassword === "") {
+            accessMessage.innerText = "Por favor, preencha todos os campos.";
+            return;
+        }
+
+        // Verificação de senha no cadastro
+        if (password !== confirmPassword) {
+            accessMessage.innerText = "As senhas não coincidem. Por favor, verifique.";
+            return;
+        }
+
         const users = JSON.parse(localStorage.getItem('users')) || [];
         
         // Verifica se o usuário já existe
@@ -79,11 +118,15 @@ function handleAuth() {
         localStorage.setItem('users', JSON.stringify(users));
         
         accessMessage.innerText = "Cadastro realizado com sucesso! Faça login para continuar.";
-        toggleForm();
+        
+        // Alterna para a tela de login após cadastro bem-sucedido
+        setTimeout(() => {
+            toggleForm();
+        }, 2000);
     }
 }
 
 // Inicialização quando a página carrega
 document.addEventListener('DOMContentLoaded', function() {
-    toggleForm(); // Inicializa no modo login
+    updateWelcomeSection(); // Inicializa a seção de boas-vindas
 });
